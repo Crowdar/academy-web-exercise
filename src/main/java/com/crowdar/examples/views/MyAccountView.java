@@ -1,7 +1,5 @@
 package com.crowdar.examples.views;
 
-import com.crowdar.examples.constants.MyAccountCte;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class MyAccountView extends BaseView {
@@ -14,14 +12,11 @@ public class MyAccountView extends BaseView {
     public static String searchLocator(String elemento){
         switch (elemento){
             case "T-Shirts":
-                return MyAccountCte.BTN_T_SHIRTS;
+                return "MyAccount.btnTShirts";
             case "Title":
-                return MyAccountCte.H1_TITLE;
+                return "MyAccount.h1Title";
 
         }
         return "";
-    }
-    public void metodo(){
-
     }
 }

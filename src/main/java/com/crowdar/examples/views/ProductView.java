@@ -1,6 +1,5 @@
 package com.crowdar.examples.views;
 
-import com.crowdar.examples.constants.ProductCte;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ProductView extends BaseView{
@@ -13,21 +12,29 @@ public class ProductView extends BaseView{
     public static String searchLocator(String elemento){
         switch (elemento){
             case "Title":
-                return ProductCte.H1_TITLE;
+                return "ProductView.h1Title";
+
             case "Order Confirmation":
-                return ProductCte.H1_ORDER_CONFIRMATION;
+                return "ProductView.h1OrderConfirmation";
+
             case "Aumentar Cantidad":
-                return ProductCte.BTN_AUMENTAR_CANTIDAD;
+                return "ProductView.btnAumentarCantidad";
+
             case "Disminuir Cantidad":
-                return ProductCte.BTN_DISMINUIR_CANTIDAD;
+                return "ProductView.btnDisminuirCantidad";
+
             case "Add To Cart":
-                return ProductCte.BTN_ADD_TO_CART;
+                return "ProductView.btnAddToCart";
+
             case "Proceed To Checkout":
-                return ProductCte.BTN_PROCEED_TO_CHECKOUT;
+                return "ProductView.btnProceedToCheckout";
+
             case "Cantidad Total":
-                return ProductCte.INPUT_CANTIDAD_TOTAL;
+                return "ProductView.inputCantidadTotal";
+
             case "Popup Proceed To Checkout":
-                return ProductCte.POPUP_PROCEED_TO_CHECKOUT;
+                return "ProductView.popUpProceedToCheckout";
+
         }
         return "";
     }

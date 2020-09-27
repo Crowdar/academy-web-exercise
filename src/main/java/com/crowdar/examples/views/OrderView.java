@@ -1,6 +1,5 @@
 package com.crowdar.examples.views;
 
-import com.crowdar.examples.constants.OrderCte;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class OrderView extends BaseView {
@@ -13,19 +12,19 @@ public class OrderView extends BaseView {
     public static String searchLocator(String elemento){
         switch (elemento){
             case "Navigation Page":
-                return OrderCte.NAVIGATION_PAGE;
+                return "OrderView.spanNavigationPage";
             case "Checkout Para Address":
-                return OrderCte.BTN_PROCEED_TO_CHECKOUT_TO_ADDRESS;
+                return "OrderView.btnProceedToCheckoutToAddress";
             case "Checkout Para Shipping":
-                return OrderCte.BTN_PROCEED_TO_CHECKOUT_TO_SHIPPING;
+                return "OrderView.btnProceedToCheckoutToShipping";
             case "Checkout Para Payment":
-                return OrderCte.BTN_PROCEED_TO_CHECKOUT_TO_PAYMENT;
+                return "OrderView.btnProceedToCheckoutToPayment";
             case "Pay Ban Wire":
-                return OrderCte.BTN_PAY_BANK_WIRE;
+                return "OrderView.btnPayBankWire";
             case "Confirm My Order":
-                return OrderCte.BTN_CONFIRM_MY_ORDER;
+                return "OrderView.btnConfirmMyOrder";
             case "Terminos y condiciones":
-                return OrderCte.CHECKBOX_TOS;
+                return "OrderView.checkboxTOS";
 
         }
         return "";

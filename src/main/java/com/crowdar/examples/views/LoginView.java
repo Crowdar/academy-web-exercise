@@ -1,7 +1,5 @@
 package com.crowdar.examples.views;
 
-import com.crowdar.core.actions.WebActionManager;
-import com.crowdar.examples.constants.LoginCte;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class LoginView extends BaseView {
@@ -14,19 +12,25 @@ public class LoginView extends BaseView {
     public static String searchLocator(String elemento){
         switch (elemento){
             case "Sign In":
-                return LoginCte.BTN_SIGN_IN;
+                return "LoginView.btnSignIn";
+
             case "Slider":
-                return LoginCte.SLIDER_HOME;
+                return "LoginView.sliderHome";
+
             case "Title":
-                return LoginCte.H1_TITLE;
+                return "LoginView.h1Title";
+
             case "Email Sign In":
-                return LoginCte.INPUT_EMAIL_SIGN_IN;
+                return "LoginView.inputEmailSignIn";
+
             case "Email Sign Up":
-                return LoginCte.INPUT_EMAIL_SIGN_UP;
+                return "LoginView.inputEmailRegister";
+
             case "Password":
-                return LoginCte.INPUT_PASSWORD;
+                return "LoginView.inputPw";
+
             case "Create Account":
-                return LoginCte.BTN_CREATE_ACCOUNT;
+                return "LoginView.btnCreateAccount";
         }
         return "";
     }

@@ -1,6 +1,5 @@
 package com.crowdar.examples.views;
 
-import com.crowdar.examples.constants.HomeCte;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class HomeView extends BaseView {
@@ -13,12 +12,13 @@ public class HomeView extends BaseView {
     public static String searchLocator(String elemento){
         switch (elemento){
             case "Sign In":
-                return HomeCte.BTN_SIGN_IN;
-            case "Slider":
-                return HomeCte.SLIDER_HOME;
-            case "Title":
-                return HomeCte.H1_TITLE;
+                return "HomeView.btnSignIn";
 
+            case "Slider":
+                return "HomeView.h1Title";
+
+            case "Title":
+                return "HomeView.sliderHome";
         }
         return "";
     }
