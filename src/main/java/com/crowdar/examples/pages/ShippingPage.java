@@ -1,20 +1,24 @@
 package com.crowdar.examples.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
 public class ShippingPage extends PageBaseShop{
+
     public ShippingPage(RemoteWebDriver driver) {
         super(driver);
         this.url="";
     }
+
+    private String INPUT_CHECKBOX_TERMS_ID = "cgv";
 
     public void verifyShippingPage(){
         Assert.assertEquals(getText("shipping.h1_pagetitle"),"SHIPPING");
     }
 
     public void acceptTerms(){
-        click("shipping.input_checkbox_terms",true);
+        selectCheckbox(By.id(INPUT_CHECKBOX_TERMS_ID));
     }
 
     public void clickProceedToCheckout(){

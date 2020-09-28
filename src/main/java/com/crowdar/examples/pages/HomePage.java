@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 public class HomePage extends PageBaseShop {
 
-
     public HomePage(RemoteWebDriver driver) {
         super(driver);
         this.url = "";
@@ -16,7 +15,6 @@ public class HomePage extends PageBaseShop {
     public void go() {
         navigateToCompleteURL();
     }
-
 
     public void verifyHomePage() {
         Assert.assertTrue(isPresent("home.div_slider"), "El elemento no esta visible");

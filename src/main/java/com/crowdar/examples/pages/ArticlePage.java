@@ -1,5 +1,6 @@
 package com.crowdar.examples.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -13,6 +14,8 @@ public class ArticlePage extends PageBaseShop{
         this.url = "";
     }
 
+    private String SELECT_SIZE_ID = "group_1";
+
     public void verifyArticlePage() {
         Assert.assertTrue(isPresent("article.a_write_review"),"El elemento no esta visible");
     }
@@ -22,8 +25,7 @@ public class ArticlePage extends PageBaseShop{
     }
 
     public void setSize(String talle){
-        //click("article.label_size");
-        //setDropdownByVisibleText("article.select_size", talle);
+        selectOptionDropdownByText(By.id(SELECT_SIZE_ID), talle);
     }
 
     public void setColor(String colorPedido){
