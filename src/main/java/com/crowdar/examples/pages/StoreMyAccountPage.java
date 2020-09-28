@@ -7,7 +7,8 @@ import org.testng.Assert;
 
 public class StoreMyAccountPage extends StorePageBase{
 
-    public final String HEADING_MYACCOUNT_CSS_SELECTOR = "<h1 class=\"page-heading\">My account</h1>";
+    public final String HEADING_MYACCOUNT_CSS_SELECTOR = "#columns > div.breadcrumb.clearfix > span.navigation_page";
+    public final String BUTTON_HOME_CSS_SELECTOR ="#center_column > ul > li > a > span";
 
     public StoreMyAccountPage(RemoteWebDriver driver){
         super(driver);
@@ -16,5 +17,8 @@ public class StoreMyAccountPage extends StorePageBase{
 
     public void VerifyMyAccountPage(){
         Assert.assertTrue(isElementVisible(By.cssSelector(HEADING_MYACCOUNT_CSS_SELECTOR)), "No se encontro la pagina");
+    }
+    public void clickButtonHome(){
+        clickElement(By.cssSelector(BUTTON_HOME_CSS_SELECTOR));
     }
 }

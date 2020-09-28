@@ -1,6 +1,6 @@
 Feature: Como cliente quiero ingresar mis credenciales para poder acceder al sitio de compras
 
-  @Login
+  @Ignore
   Scenario: El cliente incia sesion en el sitio de compras
     Given El cliente se encuentra en la pantalla de home
     When El cliente hace click en el boton sign in

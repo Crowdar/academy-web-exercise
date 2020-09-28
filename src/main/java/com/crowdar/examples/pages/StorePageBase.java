@@ -7,7 +7,7 @@ public class StorePageBase extends PageBaseWeb {
 
     public StorePageBase(RemoteWebDriver driver) {
         super(driver);
-        BASE_URL = "http://www.automationpractice.com/";
+        BASE_URL = "http://automationpractice.com/";
     }
 
 

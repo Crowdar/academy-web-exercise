@@ -4,6 +4,8 @@ import com.crowdar.core.Injector;
 import com.crowdar.core.PageSteps;
 import com.crowdar.examples.pages.StoreHomePage;
 import com.crowdar.examples.pages.StoreLoginPage;
+import com.crowdar.examples.pages.StoreMyAccountPage;
+import com.crowdar.examples.pages.StoreWomenPage;
 import io.cucumber.java.en.*;
 
 public class StoreSteps extends PageSteps {
@@ -24,7 +26,7 @@ public class StoreSteps extends PageSteps {
     }
 
     @When("El cliente ingresa su email: (.*)")
-    public void elClienteIngresaSuEmailDminguezGmailCom(String email) {
+    public void elClienteIngresaSuEmail(String email) {
         Injector._page(StoreLoginPage.class).completeEmail(email);
     }
 
@@ -35,6 +37,40 @@ public class StoreSteps extends PageSteps {
 
     @Then("El cliente verifica que fue redireccionado a la pantalla de My Account")
     public void elClienteVerificaQueFueRedireccionadoALaPantallaDeMyAccount() {
+        Injector._page(StoreMyAccountPage.class).VerifyMyAccountPage();
+    }
 
+    @Given("El cliente se encuentra en la pantalla de My Account")
+    public void elClienteSeEncuentraEnLaPantallaDeMyAccount() {
+        Injector._page(StoreMyAccountPage.class).VerifyMyAccountPage();
+    }
+
+    @When("El cliente hace click en el boton home")
+    public void elClienteHaceClickEnElBotonHome() {
+        Injector._page(StoreMyAccountPage.class).clickButtonHome();
+    }
+
+    @Then("El cliente verifica que fue redirecionado a la pantalla de home")
+    public void elClienteVerificaQueFueRedirecionadoALaPantallaDeHome() {
+        Injector._page(StoreHomePage.class).verifyHome();
+    }
+
+    @When("El cliente hace click en women")
+    public void elClienteHaceClickEnWomen() {
+        Injector._page(StoreHomePage.class).clickWomenButton();
+    }
+
+    @And("El cliente verifica que se redirecciona a la pagina women")
+    public void elClienteVerificaQueSeRedireccionaALaPaginaWomen() {
+        Injector._page(StoreWomenPage.class).verifyPage();
+    }
+
+    @And("El cliente elije un producto del listado")
+    public void elClienteElijeUnProductoDelListado() {
+
+    }
+
+    @Then("El cliente hace click en el boton add to card")
+    public void elClienteHaceClickEnElBotonAddToCard() {
     }
 }
