@@ -8,7 +8,7 @@ import org.testng.Assert;
 public class StoreShippingPage extends StorePageBase{
 
     public final String PROCCEDTOCHECKOUT_BUTTON_CSS_SELECTOR = "#form > p > button > span";
-    public final String TERMS_CHECKBOX_CSS_SELECTOR ="#cgv";
+    public final String TERMS_CHECKBOX_CSS_SELECTOR ="#uniform-cgv";
 
     public StoreShippingPage(RemoteWebDriver driver){
         super(driver);

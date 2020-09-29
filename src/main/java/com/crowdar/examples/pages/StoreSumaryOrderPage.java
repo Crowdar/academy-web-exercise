@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 public class StoreSumaryOrderPage extends StorePageBase{
 
-    public final String CONFIRMMYORDER_BUTTON_CSS_SELECTOR = "#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium > span";
+    public final String CONFIRMMYORDER_BUTTON_CSS_SELECTOR = "#cart_navigation > button > span";
 
     public StoreSumaryOrderPage(RemoteWebDriver driver){
         super(driver);

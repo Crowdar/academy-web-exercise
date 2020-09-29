@@ -12,8 +12,8 @@ public class StoreSteps extends PageSteps {
         Injector._page(StoreHomePage.class).go();
     }
 
-    @When("El cliente hace click en el boton sign in")
-    public void elClienteHaceClickEnElBotonSignIn() {
+    @When("El cliente hace un click en el boton sign in")
+    public void elClienteHaceUnClickEnElBotonSignIn() {
         Injector._page(StoreHomePage.class).clickSignInButton();
     }
 
@@ -32,8 +32,8 @@ public class StoreSteps extends PageSteps {
         Injector._page(StoreLoginPage.class).completePassword(password);
     }
 
-    @And("El cliente hace click en el boton: sign in verde")
-    public void elClienteHaceClickEnElBotonSignInVerde() {
+    @And("El cliente hace click en el segundo boton sign in verde")
+    public void elClienteHaceClickEnElSegundoBotonSignInVerde() {
         Injector._page(StoreLoginPage.class).clickButtonSignIn();
     }
 
@@ -42,8 +42,8 @@ public class StoreSteps extends PageSteps {
         Injector._page(StoreMyAccountPage.class).VerifyMyAccountPage();
     }
 
-    @When("El cliente hace click en el boton home")
-    public void elClienteHaceClickEnElBotonHome() {
+    @When("El cliente da click en el boton home")
+    public void elClienteDaClickEnElBotonHome() {
         Injector._page(StoreMyAccountPage.class).clickButtonHome();
     }
 
