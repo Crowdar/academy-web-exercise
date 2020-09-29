@@ -2,10 +2,7 @@ package com.crowdar.examples.steps;
 
 import com.crowdar.core.Injector;
 import com.crowdar.core.PageSteps;
-import com.crowdar.examples.pages.StoreHomePage;
-import com.crowdar.examples.pages.StoreLoginPage;
-import com.crowdar.examples.pages.StoreMyAccountPage;
-import com.crowdar.examples.pages.StoreCategoryPage;
+import com.crowdar.examples.pages.*;
 import io.cucumber.java.en.*;
 
 public class StoreSteps extends PageSteps {
@@ -25,13 +22,13 @@ public class StoreSteps extends PageSteps {
         Injector._page(StoreLoginPage.class).verifyLogin();
     }
 
-    @When("El cliente ingresa su email: (.*)")
-    public void elClienteIngresaSuEmail(String email) {
+    @When("El cliente ingresa el (.*)")
+    public void elClienteIngresaEl(String email) {
         Injector._page(StoreLoginPage.class).completeEmail(email);
     }
 
-    @And("El cliente ingresa su password: (.*)")
-    public void elClienteIngresaSuPassword(String password) {
+    @And("El cliente ingresa su (.*)")
+    public void elClienteIngresaSu(String password) {
         Injector._page(StoreLoginPage.class).completePassword(password);
     }
 
@@ -62,18 +59,83 @@ public class StoreSteps extends PageSteps {
 
     @And("El cliente verifica que se redirecciona a la pagina seleccionada")
     public void elClienteVerificaQueSeRedireccionaALaPaginaSeleccionada() {
-     /*   Injector._page(StoreCategoryPage.class).verifyPage();*/
+        Injector._page(StoreCategoryPage.class).verifyPage();
     }
 
-    @And("El cliente elije un producto del listado")
-    public void elClienteElijeUnProductoDelListado() {
-      Injector._page(StoreCategoryPage.class).selectProduct();
+    @And("El cliente hace click en un producto del listado")
+    public void elClienteHaceClickEnUnProductoDelListado() {
+      Injector._page(StoreCategoryPage.class).clickProduct();
 
     }
 
-    @Then("El cliente hace click en el boton add to card")
-    public void elClienteHaceClickEnElBotonAddToCard() {
+    @Then("El cliente verifica que fue redireccionado a la pagina del producto clickeado")
+    public void elClienteVerificaQueFueRedireccionadoALaPaginaDelProductoClickeado() {
+        Injector._page(StoreProductPage.class).verifyPage();
+    }
+
+    @When("El cliente hace click en el boton (.*)")
+    public void elClienteHaceClickEnElBoton(String boton) {
+        Injector._page(StoreProductPage.class).clickButton(boton);
     }
 
 
+    @Then("El cliente verifica que fue redirigido a la pagina del carrito")
+    public void elClienteVerificaQueFueRedirigidoALaPaginaDelCarrito() {
+        Injector._page(StoreCartPage.class).verifyPage();
+    }
+
+    @When("El cliente clickea el boton procced to checkout")
+    public void elClienteClickeaElBotonProccedToCheckout() {
+        Injector._page(StoreCartPage.class).clickProccedToCheckout();
+    }
+
+    @Then("El cliente verifica que se redirecciona a la pagina de direcciones")
+    public void elClienteVerificaQueSeRedireccionaALaPaginaDeDirecciones() {
+        Injector._page(StoreAddressPage.class).verifyPage();
+    }
+
+    @When("El cliente hace click sobre el boton procced to checkout")
+    public void elClienteHaceClickSobreElBotonProccedToCheckout() {
+        Injector._page(StoreAddressPage.class).clickProccedToCheckout();
+    }
+
+    @Then("El cliente verifica que fue redireccionado a la pagina de envio")
+    public void elClienteVerificaQueFueRedireccionadoALaPaginaDeEnvio() {
+        Injector._page(StoreShippingPage.class).verifyPage();
+    }
+
+    @When("El cliente hace click en el checkbox acepto terminos y condiciones")
+    public void elClienteHaceClickEnElCheckboxAceptoTerminosYCondiciones() {
+        Injector._page(StoreShippingPage.class).clickCheckbox();
+    }
+
+    @And("El cliente hace click en el boton: procced to checkout")
+    public void elClienteHaceClickEnElBotonProccedToCheckout() {
+        Injector._page(StoreShippingPage.class).clickProccedToCheckout();
+    }
+
+    @Then("El cliente verifica que fue redireccionado a la pagina de pago")
+    public void elClienteVerificaQueFueRedireccionadoALaPaginaDePago() {
+        Injector._page(StorePaymentPage.class).verifyPage();
+    }
+
+    @When("El cliente hace click en la forma de pago")
+    public void elClienteHaceClickEnLaFormaDePago() {
+        Injector._page(StorePaymentPage.class).clickPayForm();
+    }
+
+    @Then("El cliente verifica que fue redireccionado a la pagina de resumen de compra")
+    public void elClienteVerificaQueFueRedireccionadoALaPaginaDeResumenDeCompra() {
+        Injector._page(StoreSumaryOrderPage.class).verifyPage();
+    }
+
+    @When("El cliente hace click en el boton: -> I confirnm my order")
+    public void elClienteHaceClickEnElBotonIConfirnmMyOrder() {
+        Injector._page(StoreSumaryOrderPage.class).clickConfirmMyOrder();
+    }
+
+    @Then("El cliente verifica que es redirgido a la pagina de confirmacion de compra")
+    public void elClienteVerificaQueEsRedirgidoALaPaginaDeConfirmacionDeCompra() {
+        Injector._page(StoreConfirmedOrderPage.class).verifyPage();
+    }
 }
