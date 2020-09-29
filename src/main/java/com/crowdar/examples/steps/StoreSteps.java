@@ -5,7 +5,7 @@ import com.crowdar.core.PageSteps;
 import com.crowdar.examples.pages.StoreHomePage;
 import com.crowdar.examples.pages.StoreLoginPage;
 import com.crowdar.examples.pages.StoreMyAccountPage;
-import com.crowdar.examples.pages.StoreWomenPage;
+import com.crowdar.examples.pages.StoreCategoryPage;
 import io.cucumber.java.en.*;
 
 public class StoreSteps extends PageSteps {
@@ -35,13 +35,13 @@ public class StoreSteps extends PageSteps {
         Injector._page(StoreLoginPage.class).completePassword(password);
     }
 
-    @Then("El cliente verifica que fue redireccionado a la pantalla de My Account")
-    public void elClienteVerificaQueFueRedireccionadoALaPantallaDeMyAccount() {
-        Injector._page(StoreMyAccountPage.class).VerifyMyAccountPage();
+    @And("El cliente hace click en el boton: sign in verde")
+    public void elClienteHaceClickEnElBotonSignInVerde() {
+        Injector._page(StoreLoginPage.class).clickButtonSignIn();
     }
 
-    @Given("El cliente se encuentra en la pantalla de My Account")
-    public void elClienteSeEncuentraEnLaPantallaDeMyAccount() {
+    @Then("El cliente verifica que fue redireccionado a la pantalla de My Account")
+    public void elClienteVerificaQueFueRedireccionadoALaPantallaDeMyAccount() {
         Injector._page(StoreMyAccountPage.class).VerifyMyAccountPage();
     }
 
@@ -55,22 +55,25 @@ public class StoreSteps extends PageSteps {
         Injector._page(StoreHomePage.class).verifyHome();
     }
 
-    @When("El cliente hace click en women")
-    public void elClienteHaceClickEnWomen() {
-        Injector._page(StoreHomePage.class).clickWomenButton();
+    @When("El cliente hace click en una (.*)")
+    public void elClienteHaceClickEnUna(String categoria) {
+        Injector._page(StoreHomePage.class).clickCategoryButton(categoria);
     }
 
-    @And("El cliente verifica que se redirecciona a la pagina women")
-    public void elClienteVerificaQueSeRedireccionaALaPaginaWomen() {
-        Injector._page(StoreWomenPage.class).verifyPage();
+    @And("El cliente verifica que se redirecciona a la pagina seleccionada")
+    public void elClienteVerificaQueSeRedireccionaALaPaginaSeleccionada() {
+     /*   Injector._page(StoreCategoryPage.class).verifyPage();*/
     }
 
     @And("El cliente elije un producto del listado")
     public void elClienteElijeUnProductoDelListado() {
+      Injector._page(StoreCategoryPage.class).selectProduct();
 
     }
 
     @Then("El cliente hace click en el boton add to card")
     public void elClienteHaceClickEnElBotonAddToCard() {
     }
+
+
 }
