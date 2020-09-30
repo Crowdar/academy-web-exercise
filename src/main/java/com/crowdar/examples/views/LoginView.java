@@ -1,12 +1,18 @@
 package com.crowdar.examples.views;
 
+import com.crowdar.core.actions.WebActionManager;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 
 public class LoginView extends BaseView {
 
     public LoginView(RemoteWebDriver driver){
         super(driver);
         this.url = "";
+    }
+    public void verifyScreen(){
+        Assert.assertEquals(WebActionManager.getText(LoginView.searchLocator("Title")),
+                "AUTHENTICATION");
     }
 
     public static String searchLocator(String elemento){
@@ -31,7 +37,9 @@ public class LoginView extends BaseView {
 
             case "Create Account":
                 return "LoginView.btnCreateAccount";
+            default:
+                throw new IllegalStateException("Valor no esperado: " + elemento);
         }
-        return "";
+
     }
 }

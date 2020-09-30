@@ -26,9 +26,18 @@
     </properties>
     <profiles>
         <profile>
-            <id>Local</id>
+            <id>CrowdarWeb</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <crowdar.cucumber.browser>WEB_CHROME</crowdar.cucumber.browser>
+                <crowdar.json.path>src/test/resources/json/</crowdar.json.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>Local</id>
+            <activation>
             </activation>
             <properties>
                 <crowdar.cucumber.browser>WEB_CHROME</crowdar.cucumber.browser>
