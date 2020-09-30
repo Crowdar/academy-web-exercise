@@ -90,11 +90,13 @@ public class CategoriesView extends BaseView{
 
         for (WebElement elemento : lista){
             nombreProducto = elemento.findElement(By.className("product-name")).getText();
-            System.out.println(nombreProducto);
 
             if (nombreProducto.equalsIgnoreCase(item)){
-                clickElement(elemento.findElement(By.className("product-name")));
+                //clickElement(elemento.findElement(By.className("product-name")));
+                //WebActionManager.navigateTo(elemento.findElement(By.className("product-name")).getAttribute("href"));
+                elemento.findElement(By.className("product-name")).click();
                 System.out.println("Click Click!");
+                break;
             }
         }
     }
