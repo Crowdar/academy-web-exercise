@@ -1,9 +1,7 @@
 package com.crowdar.examples.views;
 
-import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.core.actions.WebActionManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -68,9 +66,9 @@ public class CategoriesView extends BaseView{
 
             case "Sub categoría T-Shirts":
                 return "CategoriesView.btnTopsSubcategoryTShirts";
-
+            default:
+                throw new IllegalStateException("Valor no esperado: " + elemento);
         }
-        return "";
     }
     public static String revisarSiCategory(String pantalla){
         cargarCategorias();
@@ -78,10 +76,6 @@ public class CategoriesView extends BaseView{
             return "Categoria";
         }
         return pantalla;
-    }
-
-    public void comprar(String item) {
-        clickElement(WebActionManager.getElement("CategoriesView.txtPrimerArticulo"));
     }
 
     public void elegirItem(String item) {
@@ -92,10 +86,7 @@ public class CategoriesView extends BaseView{
             nombreProducto = elemento.findElement(By.className("product-name")).getText();
 
             if (nombreProducto.equalsIgnoreCase(item)){
-                //clickElement(elemento.findElement(By.className("product-name")));
-                //WebActionManager.navigateTo(elemento.findElement(By.className("product-name")).getAttribute("href"));
                 elemento.findElement(By.className("product-name")).click();
-                System.out.println("Click Click!");
                 break;
             }
         }

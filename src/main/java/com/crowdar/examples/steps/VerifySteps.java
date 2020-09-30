@@ -45,11 +45,4 @@ public class VerifySteps extends PageSteps {
         }
 
     }
-    @Then("El cliente verifica que aparece el Pop Up de (.*)")
-    public void elClienteVerificaQueApareceElPopUpDeAgregadoAlCarrito(String popUp) {
-        switch (popUp){
-            case "agregado al carrito":
-               // Injector._page(TShirtsPage.class).verifyScreen(popUp);
-        }
-    }
 }

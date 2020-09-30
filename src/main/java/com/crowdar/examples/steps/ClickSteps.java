@@ -1,6 +1,5 @@
 package com.crowdar.examples.steps;
 
-import com.crowdar.core.Injector;
 import com.crowdar.core.PageSteps;
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.examples.views.*;
