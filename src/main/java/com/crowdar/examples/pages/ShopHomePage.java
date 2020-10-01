@@ -29,7 +29,7 @@ public class ShopHomePage extends PageBaseShop {
     private final String BUTTON_PROCEED_TO_CHECKOUT2_CSS_SELECTOR = "#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium";
     private final String BUTTON_PROCEED_TO_CHECKOUT3_CSS_SELECTOR = "#center_column > form > p > button";
     private final String BUTTON_PROCEED_TO_CHECKOUT4_CSS_SELECTOR = "#form > p > button";
-    private final String BUTTON_AGREE_TERMS_OF_SERVICE_ID = "cgv";
+    private final String BUTTON_AGREE_TERMS_OF_SERVICE_CSS_SELECTOR = "#uniform-cgv";
     private final String BUTTON_PAY_BY_BANK_WIRE_CSS_SELECTOR = "#HOOK_PAYMENT > div:nth-child(1) > div > p > a";
     private final String BUTTON_CONFIRM_ORDER_CSS_SELECTOR = "#cart_navigation > button";
     private final String TITTLE_H1_CSS_SELECTOR_MYACCOUNT = "#center_column > h1";
@@ -214,7 +214,7 @@ public class ShopHomePage extends PageBaseShop {
 
     public void termsofServiceclick() {
 
-        clickElement(By.id(BUTTON_AGREE_TERMS_OF_SERVICE_ID));
+        clickElement(By.cssSelector(BUTTON_AGREE_TERMS_OF_SERVICE_CSS_SELECTOR));
     }
 
     public void paybyBankWireclick() {
@@ -275,7 +275,7 @@ public class ShopHomePage extends PageBaseShop {
 
     }
     public void verifyOrderConfirmationScreen() {
-        Assert.assertEquals(getWebElement(By.cssSelector(TITTLE_H1_CSS_SELECTOR_ORDERCONFIRMATION)).getText(),"ORDER CONFIRMATION ");
+        Assert.assertEquals(getWebElement(By.cssSelector(TITTLE_H1_CSS_SELECTOR_ORDERCONFIRMATION)).getText(),"ORDER CONFIRMATION");
 
     }
 
