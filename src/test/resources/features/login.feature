@@ -14,3 +14,5 @@ Feature:  As a customer, enter your account credentials and make purchases on th
     Examples:
       | email                                | password  |
       | lindacristal.parrasanhueza@gmail.com | Testing29 |
+
+
