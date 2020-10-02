@@ -5,7 +5,8 @@ import com.crowdar.examples.constants.LoginConstants;
 
 public class ClickElementService {
 
-    public static void clickSingInHome(){
+    public static void clickSingInHome(String element){
+        
         ActionManager.click(LoginConstants.SIGN_IN_BUTTON_LOCATOR);
     }
 }

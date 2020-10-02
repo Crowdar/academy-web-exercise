@@ -1,4 +1,4 @@
 package com.crowdar.examples.constants;
 
-public class ModalAddToCartView {
+public class ModalAddToCartViewConstants {
 }
