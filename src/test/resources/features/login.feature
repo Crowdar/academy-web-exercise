@@ -2,14 +2,15 @@ Feature:  As a customer, enter your account credentials and make purchases on th
 
   @Login
   Scenario Outline: The client goes to the shop page and login
-    Given The page loaded correctly
-    When the client clicks the Sign In button
-    Then Home page is displayed
+    Given The client is in shopp page
+    When Home page is displayed
+    Then the client clicks the Sign In button
+
+    When My Account page is displayed
+    Then the form login is visible
 
     When The client logs in the application with: <email>, <password>
-    And the client clicks the Sign In button
-    Then My Account page is displayed
-
+    Then the client submits the form
 
     Examples:
       | email                                | password  |
