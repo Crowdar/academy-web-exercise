@@ -1,6 +1,6 @@
 package com.crowdar.examples.steps;
+
 import com.crowdar.core.PageSteps;
-import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.examples.services.CommonService;
 import com.crowdar.examples.services.LoginService;
 import io.cucumber.java.en.*;
@@ -10,7 +10,7 @@ public class LoginSteps extends PageSteps {
 
     @Given("The client is in shopp page")
     public void goShoppPage() {
-        WebActionManager.navigateTo("http://automationpractice.com/");
+        CommonService.homePage();
     }
 
     @When("(.*) page is displayed")
