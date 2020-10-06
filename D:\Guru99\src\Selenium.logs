@@ -1,4 +1,6 @@
-22:48:21,233  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:20 - ------ Starting -----The client goes to the shop page and login-----
-22:48:31,066  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:35 - ------ Ending -----The client goes to the shop page and login-----
-22:48:31,138  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:20 - ------ Starting -----The client goes to the shop page and login-----
-22:48:39,761  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:35 - ------ Ending -----The client goes to the shop page and login-----
+22:29:12,651  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:20 - ------ Starting -----The client goes to the home page and makes a buy-----
+22:29:36,038  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:35 - ------ Ending -----The client goes to the home page and makes a buy-----
+22:29:36,111  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:20 - ------ Starting -----The client goes to the home page and makes a buy-----
+22:29:57,536  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:35 - ------ Ending -----The client goes to the home page and makes a buy-----
+22:29:57,608  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:20 - ------ Starting -----The client goes to the shop page and login-----
+22:30:06,703  INFO com.crowdar.bdd.cukes.hooks.BasicHook<strong>{1}</strong>:35 - ------ Ending -----The client goes to the shop page and login-----

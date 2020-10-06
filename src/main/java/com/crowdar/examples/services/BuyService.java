@@ -1,15 +1,13 @@
 package com.crowdar.examples.services;
 
-
+import com.crowdar.core.Utils;
 import com.crowdar.core.actions.WebActionManager;
-import com.crowdar.examples.constants.HomeConstants;
-import com.crowdar.examples.constants.ModalAddToCartConstants;
-import com.crowdar.examples.constants.ProductConstants;
-import com.crowdar.examples.constants.SummaryConstants;
+import com.crowdar.examples.constants.*;
 import org.openqa.selenium.WebElement;
 
-
 import java.util.Random;
+
+import static com.crowdar.core.actions.WebActionManager.*;
 
 public class BuyService {
 
@@ -18,96 +16,128 @@ public class BuyService {
     private static int bsMin = 7;
     private static int bsMax = 13;
 
-    private static String initPrice = null;
-    private static String modalPrice= null;
-    private static boolean staticPrice = false;
+    private static String initPrice;
+    WebElement pScroll = WebActionManager.getElement(SummaryConstants.ELEMENT_SCROLL_LOCATOR);
 
-    public static void clickButton(String button){
 
-        if(button.equals("Add to cart"))
-            WebActionManager.click(ProductConstants.ADD_BUTTON_LOCATOR, true);
-        if(button.equals("checkout") && CommonService.constantPrice(initPrice,modalPrice))
-            WebActionManager.click(ModalAddToCartConstants.CHECKOUT_BUTTON_CART_LOCATOR);
-        if(button.equals("summary"))
-            WebActionManager.click(SummaryConstants.CHECKOUT_BUTTON_SUMMARY_LOCATOR);
-        if(button.equals("address"))
-            WebActionManager.click(SummaryConstants.CHECKOUT_BUTTON_ADDRES_LOCATOR);
-        if(button.equals("shipping"))
-            WebActionManager.click(SummaryConstants.CHECKOUT_BUTTON_SHIPPING_LOCATOR);
-        if(button.equals("confirm order"))
-            WebActionManager.click(SummaryConstants.PROCESS_BUTTON_CHECKOUT_LOCATOR);
-        if(button.equals("bank"))
-            WebActionManager.click(SummaryConstants.PAY_BANK_LOCATOR);
-        if(button.equals("check"))
-            WebActionManager.click(SummaryConstants.PAY_CHECK_LOCATOR);
-        if (button.equals("confirm"))
-            WebActionManager.click(SummaryConstants.CONFIRM_BUTTON_LOCATOR);
+    public static void loggedInHomePage() {
+        CommonService.homePage();
 
+        LoginService.inputLogin("lindacristal.parrasanhueza@gmail.com", "Testing29");
+        LoginService.submitFormLogin();
+        CommonService.homePage();
     }
+
 
     public static void selectProduct(String tabName) {
         WebElement tabToActive = null;
         int index;
         Random random = new Random();
 
-        if (tabName.equals("Popular")){
-            tabToActive = WebActionManager.getElement(HomeConstants.TAB_POPULAR_HOME_LOCATOR);
+        if (tabName.equals("Popular")) {
+            tabToActive = getElement(HomeConstants.TAB_POPULAR_HOME_LOCATOR);
             index = random.ints(popularMin, popularMax).findFirst().getAsInt();
-        }
-        else {
-            tabToActive = WebActionManager.getElement(HomeConstants.TAB_BS_HOME_LOCATOR);
+        } else {
+            tabToActive = getElement(HomeConstants.TAB_BS_HOME_LOCATOR);
             index = random.ints(bsMin, bsMax).findFirst().getAsInt();
         }
-
         tabToActive.click();
 
-        WebElement product = WebActionManager.getElements(HomeConstants.PRODUCT_HOME_LOCATOR).get(index);
+        WebElement product = getElements(HomeConstants.PRODUCT_HOME_LOCATOR).get(index);
         CommonService.scroll(product);
-        product.click();
+
+        String urlProduct = product.getAttribute("href");
+        navigateTo(urlProduct);
 
     }
 
-    public static void addToCart() {
+    public static void completeBuyout(String pay) {
 
-        WebActionManager.isVisible(ModalAddToCartConstants.MODAL_TO_CART_LOCATOR);
-
-        WebElement price = WebActionManager.getElement(ProductConstants.PRICE_LOCATOR);
+        WebElement price = getElement(ProductConstants.PRICE_LOCATOR);
         initPrice = price.getText();
+        CommonService.scroll(price);
+        clickButton("Add to cart");
+        goSummary();
+        goSignIn();
+        goAddress();
+        goShipping();
+        goPayment(pay);
+    }
 
-        WebElement priceModalCart = WebActionManager.getElement(ModalAddToCartConstants.PRICE_LOCATOR);
-        modalPrice = priceModalCart.getText();
+
+    public static void clickButton(String button) {
+        switch (button) {
+            case "Add to cart":
+                click(ProductConstants.ADD_BUTTON_LOCATOR);
+                break;
+            case "checkout modal":
+                click(ModalAddToCartConstants.CHECKOUT_BUTTON_CART_LOCATOR);
+                break;
+            case "go signin":
+                click(SummaryConstants.GO_LOGIN_BUTTON_LOCATOR);
+                break;
+            case "go shipping":
+                click(SummaryConstants.GO_SHIPPING_BUTTON_LOCATOR);
+                break;
+
+            case "go payment":
+                click(SummaryConstants.GO_PAYMENT_LOCATOR);
+                break;
+            case "bank":
+                click(SummaryConstants.PAY_BANK_LOCATOR);
+                break;
+            case "check":
+                click(SummaryConstants.PAY_CHECK_LOCATOR);
+                break;
+            case "confirm":
+                click(SummaryConstants.CONFIRM_BUTTON_LOCATOR);
+                break;
+            default:
+                System.out.println("Button not found");
+        }
+    }
+
+
+    public static void goSummary() {
+        clickButton("checkout modal");
 
     }
 
-    public static boolean checkAddress(String address) {
-        WebActionManager.isVisible(SummaryConstants.ADDRESS_LOCATOR);
-        String dir = WebActionManager.getText(SummaryConstants.ADDRESS_LOCATOR);
-        if(dir.equals(address))
-            return true;
-        else return false;
-    }
-
-    public static void acceptsTermsAndConditions() {
-        WebActionManager.isVisible(SummaryConstants.CHECKOUT_BUTTON_SHIPPING_LOCATOR);
-
+    public static void goSignIn() {
+        clickButton("go signin");
+        LoginService.inputLogin("lindacristal.parrasanhueza@gmail.com", "Testing29");
+        WebActionManager.click(LoginConstants.BUTTON_LOGIN_FORM_LOCATOR);
 
     }
 
-    public static boolean checkPrice(){
+    public static void goAddress() {
+        clickButton("go shipping");
+    }
 
-        WebElement price = WebActionManager.getElement(SummaryConstants.PRICE_PRODUCT_LOCATOR);
+    public static void goShipping() {
+        WebElement checkbox = WebActionManager.getElement(SummaryConstants.CHECKBOX_SHIPPING_LOCATOR);
+        checkbox.isEnabled();
+        checkbox.click();
+        clickButton("go payment");
+    }
+
+    public static void goPayment(String paySelect) {
+        if (checkPrice()) {
+            clickButton(paySelect);
+            clickButton("confirm");
+            WebActionManager.isVisible(SummaryConstants.ORDER_LOCATOR);
+        }
+    }
+
+
+    public static boolean checkPrice() {
+        boolean staticPrice = false;
+        WebElement price = getElement(SummaryConstants.PRICE_PRODUCT_BUY_LOCATOR);
         String finPrice = price.getText();
 
-        if(CommonService.constantPrice(finPrice,initPrice))
+        if (CommonService.constantPrice(finPrice, initPrice))
             staticPrice = true;
-
         return staticPrice;
-
-    }
-
-    public static void methodOfPayment(String pay) {
-        if (staticPrice)
-            clickButton(pay);
 
     }
 

@@ -8,5 +8,6 @@ public class LoginConstants {
     public static final String PASSWORD_INPUT_LOCATOR = "loginView.passInput";
     public static final String SIGN_IN_FORM_LOCATOR = "loginView.signIn";
     public static final String LOGIN_FORM_LOCATOR = "loginView.loginForm";
+    public static final String BUTTON_LOGIN_FORM_LOCATOR = "loginView.buttonLogin";
 
 }
